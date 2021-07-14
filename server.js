@@ -1,17 +1,14 @@
   
 const express = require('express');
-const nomeApp = process.env.npm_package_name;
 const app = express();
+const nomeApp = 'sb-pessoa';
 
-const PORT = process.env.PORT || 8080;
+const outputPath = `${__dirname}/dist/${nomeApp}`;
 
-app.use(express.static(__dirname +'/dist'));
+app.use(express.static(outputPath));
 
 app.get('/*', (req, res) => {
-res.sendFile(__dirname + 'dist/index.html');
+res.sendFile(`${outputPath}/index.html`);
 });
 
-
-app.listen(PORT, () =>{
-    console.log('server iniciado ' + PORT)
-})
+app.listen(process.env.PORT)
