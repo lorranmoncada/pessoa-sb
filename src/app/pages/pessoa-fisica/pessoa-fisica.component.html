@@ -1,0 +1,33 @@
+<form [formGroup]="formPessoaFisica" (ngSubmit)="onSubmit(formPessoaFisica)" class="row mt-2 container mx-auto">
+    <div class="col-md-4">
+        <label for="validationCustom01" class="form-label">Nome</label>
+        <input type="text" formControlName="nome" class="form-control">
+    </div>
+    <div class="col-md-4">
+        <label for="validationCustom02" class="form-label">Cpf</label>
+        <input type="text" formControlName="cpf" class="form-control" mask="000.000.000-00">
+    </div>
+    <div class="col-md-4">
+        <label for="validationCustom02" class="form-label">Contato</label>
+        <input type="text" formControlName="contato" mask="(00)00000-0000" class="form-control">
+    </div>
+
+
+    <div class="col-md-6">
+        <label for="validationCustom02" class="form-label">Endereço</label>
+        <input type="text" formControlName="endereco" class="form-control">
+    </div>
+
+    <div class="col-md-12 mt-3 mb-3">
+        <button type="submit" [disabled]="!formPessoaFisica.valid" class="btn btn-primary" type="submit"> {{isEditar ?
+            'Editar' : 'Cadastrar'}} </button>
+    </div>
+</form>
+
+<div *ngIf="pessoasFisicas$ | async as pessoasFisicas" class="container">
+    <list-pessoa-fisica (obterPessoaFisica)="obterPessoaFisica($event)" (inativar)="inativar($event)"
+        [pessoasFisicas]="pessoasFisicas"></list-pessoa-fisica>
+</div>
+
+<app-loading [loading$]="loading$"></app-loading>
+<app-toast-container></app-toast-container>

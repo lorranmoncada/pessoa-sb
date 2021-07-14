@@ -1,0 +1,22 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Razao Social</th>
+    <th scope="col">Cnpj</th>
+    <th scope="col">Contato</th>
+    <th scope="col">Endereco</th>
+    <th scope="col">Ações</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let pessoaJuridica of pessoasJuridicas; index as i">
+    <td>
+      <ngb-highlight [result]="pessoaJuridica?.razaoSocial"></ngb-highlight>
+    </td>
+    <td><ngb-highlight [result]="pessoaJuridica.cnpj" ></ngb-highlight></td>
+    <td><ngb-highlight [result]="pessoaJuridica.contato" ></ngb-highlight></td>
+    <td><ngb-highlight [result]="pessoaJuridica.endereco" ></ngb-highlight></td>
+    <th scope="row"><button (click)="emitPessoaJuridicaId(pessoaJuridica.id)" class="btn mr-1 btn-light"><i class="fa fa-pencil-square-o"></i></button><button  (click)="emitInativarPessoaJuridica(pessoaJuridica.id)" class="btn btn-light"><i class="fa mr-1 fa-trash"></i></button></th>
+  </tr>
+  </tbody>
+</table>
