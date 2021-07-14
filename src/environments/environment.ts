@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  url:'https://api-pessoa-sb.herokuapp.com/api/v1'
+  url:'https://api-pessoa-api.herokuapp.com/api/v1'
 };
 
 
